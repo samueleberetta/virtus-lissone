@@ -44,7 +44,7 @@ export function TH({
   children,
   className,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }) {
   return (
@@ -56,7 +56,7 @@ export function TD({
   children,
   className,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }) {
   return <td className={cn("px-4 py-3 align-middle", className)}>{children}</td>;

@@ -44,7 +44,7 @@ export default async function PresenzePage({
     athlete_id: string;
     athletes: { id: string; nome: string; cognome: string };
   }[] = [];
-  let currentAttendance: Record<string, string> = {};
+  const currentAttendance: Record<string, string> = {};
   if (openSession?.data) {
     const session = openSession.data as unknown as { team_id: string; id: string };
     const { data: ath } = await supabase
@@ -52,7 +52,7 @@ export default async function PresenzePage({
       .select("athlete_id, athletes(id, nome, cognome)")
       .eq("season_id", seasonId ?? "")
       .eq("team_id", session.team_id);
-    athletesInTeam = (ath ?? []) as typeof athletesInTeam;
+    athletesInTeam = (ath ?? []) as unknown as typeof athletesInTeam;
 
     const { data: att } = await supabase
       .from("attendance")
